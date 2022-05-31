@@ -9,13 +9,18 @@ function WatchList() {
       <div className="container">
         <div className="header">
           <h1 className="heading">İzlenecek Filmler</h1>
+          <div className="count-pill">
+            {watchlist.length} {watchlist.length < 2 ? "Movie" : "Movies"}
+          </div>
         </div>
-        {watchlist.length > 0 && (
+        {watchlist.length > 0 ? (
           <div className="movie-grid">
             {watchlist.map((movie) => (
-              <MovieCard movie={movie} />
+              <MovieCard movie={movie} key={movie.id} type="watchlist" />
             ))}
           </div>
+        ) : (
+          <h2 className="no-movies">Listede Film Yok...</h2>
         )}
       </div>
     </div>
